@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Text layoutX="22.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
+            <Text layoutX="22.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" />
+            <Text layoutX="119.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora:" />
+            <Separator layoutX="4.0" layoutY="89.0" prefHeight="21.0" prefWidth="591.0" />
+            <Text layoutX="22.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saldo e Extrato">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Text>
+            <Button layoutX="194.0" layoutY="311.0" mnemonicParsing="false" text="Imprimir Extrato">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <Text fill="RED" layoutX="27.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saldo:">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Text layoutX="22.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
+            <Text layoutX="22.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" />
+            <Text layoutX="119.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora:" />
+            <Separator layoutX="4.0" layoutY="89.0" prefHeight="21.0" prefWidth="591.0" />
+            <Text layoutX="22.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Depositar">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Text>
+            <Text layoutX="22.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <Text layoutX="22.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero da Conta">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <Button layoutX="331.0" layoutY="333.0" mnemonicParsing="false" text="Cancelar">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <Button layoutX="167.0" layoutY="333.0" mnemonicParsing="false" text="Confirmar">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <TextField layoutX="94.0" layoutY="226.0" />
+            <TextField layoutX="237.0" layoutY="263.0" />
+            <Text fill="#fc0000" layoutX="22.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saldo:">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
