@@ -8,7 +8,11 @@ public abstract class Operacoes extends GeraTxt {
   private GeraTxt gera = new GeraTxt();
   private double saldo = 200;
 
+
   public void sacar(double valor, int conta) throws IOException {
+
+        System.out.println("\n----------------------- Finalizando Operaçao ---------------------------");
+
 
     System.out.println("---------------------Iniciando Operaçao--------------------------\n");
 

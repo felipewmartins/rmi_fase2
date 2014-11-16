@@ -1,7 +1,5 @@
 package rmi_fase2.server;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
