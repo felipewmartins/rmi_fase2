@@ -1,5 +1,8 @@
 package rmi_fase2.server;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -20,7 +23,7 @@ public class Participante1 implements Compute {
     return t.execute();
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     try {
       LocateRegistry.createRegistry(2001);
       System.out.println("RMI registrado na porta 2001");
