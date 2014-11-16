@@ -1,10 +1,6 @@
 package rmi_fase2.controle;
 
-import rmi_fase2.client.Participante1;
-
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public abstract class Operacoes extends GeraTxt{
 	
