@@ -1,6 +1,5 @@
 package rmi_fase2.server;
 
-import java.io.ObjectInputStream.GetField;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
