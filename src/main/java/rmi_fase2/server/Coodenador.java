@@ -9,11 +9,11 @@ import java.rmi.server.UnicastRemoteObject;
 import rmi_fase2.compute.Compute;
 import rmi_fase2.compute.Task;
 
-public class ComputeEngine implements Compute, Serializable {
+public class Coodenador implements Compute, Serializable {
 
   private static final long serialVersionUID = -2163726111780263507L;
 
-  public ComputeEngine() {
+  public Coodenador() {
     super(); // TODO Auto-generated constructor stub
   }
 
@@ -37,7 +37,7 @@ public class ComputeEngine implements Compute, Serializable {
     }
     try {
       String name = "Compute";
-      Compute engine = new ComputeEngine();
+      Compute engine = new Coodenador();
       Compute stub = (Compute) UnicastRemoteObject.exportObject(engine, 2000);
       Registry registry = LocateRegistry.getRegistry(2000);
       registry.rebind(name, stub);

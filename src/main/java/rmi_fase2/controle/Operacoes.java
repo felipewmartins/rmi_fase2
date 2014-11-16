@@ -9,9 +9,10 @@ public abstract class Operacoes extends GeraTxt {
   private double saldo = 200;
 
 
-  public void sacar(double valor, int conta) throws IOException {
+  public synchronized void sacar(double valor, int conta) throws IOException {
 
-        System.out.println("\n----------------------- Finalizando Operaçao ---------------------------");
+    System.out
+        .println("\n----------------------- Finalizando Operaçao ---------------------------");
 
 
     System.out.println("---------------------Iniciando Operaçao--------------------------\n");
@@ -32,7 +33,7 @@ public abstract class Operacoes extends GeraTxt {
 
   }
 
-  public void depositar(double valor, int conta) throws IOException {
+  public synchronized void depositar(double valor, int conta) throws IOException {
 
     System.out
         .println("\n------------------------- Iniciando Operaçao --------------------------------");

@@ -20,7 +20,7 @@ public class Participante2 implements Compute {
     return t.execute();
   }
 
-  public static void main(String[] args) {
+  private void createRegister() {
     try {
       LocateRegistry.createRegistry(2002);
       System.out.println("RMI - registrado na porta 2002");
@@ -28,6 +28,10 @@ public class Participante2 implements Compute {
       // TODO: handle exception
       e.printStackTrace();
     }
+  }
+
+  public void startP2() {
+    createRegister();
     try {
       String name = "Compute";
       Compute engine = new Participante2();
@@ -39,6 +43,11 @@ public class Participante2 implements Compute {
       System.err.println("ComputeEngine exception:");
       e.printStackTrace();
     }
+  }
+
+  public static void main(String[] args) {
+
+
   }
 
 }
