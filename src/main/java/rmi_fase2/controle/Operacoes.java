@@ -1,46 +1,54 @@
 package rmi_fase2.controle;
 
-public abstract class Operacoes {
+import rmi_fase2.client.Participante1;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public abstract class Operacoes extends GeraTxt{
 	
-	private String nome;
-    private double saldo;
-    private int conta;
     private String msg;
+    private GeraTxt gera = new GeraTxt();
+    private double saldo = 200;
 
-    public void sacar(double valor) {
+    public void sacar(double valor, int conta) throws IOException {
 
-        System.out.println("Iniciando Operaçao");
+        System.out.println("---------------------Iniciando Operaçao--------------------------\n");
 
-        if(saldo <= 0){
+        if(saldo <= 0 | valor > saldo){
             System.out.println("Impossivel sacar. Saldo atual.:" + saldo);
         }
         else {
-            saldo = saldo - valor;
             System.out.println("Saldo atual.:" + saldo);
-            msg = "Usuario.: "+nome+" /n Sacou.:"+valor;
+            saldo = saldo - valor;
+            msg = "Conta.: "+conta+" | Sacou.:"+valor;
+            System.out.println(msg);
         }
 
-        System.out.println("Finalizando Operaçao");
+        System.out.println("\n----------------------- Finalizando Operaçao ---------------------------\n");
+
+        gera.extrato(conta, msg);
+
     }
 
-    public void depositar(double valor, int conta) {
+    public void depositar(double valor, int conta) throws IOException {
 
-        System.out.println("Iniciando Operaçao");
+        System.out.println("\n------------------------- Iniciando Operaçao --------------------------------");
 
         if(saldo <= 0){
             System.out.println("Impossivel depositar, Saldo atual.: " + saldo);
         }
         else{
+            msg = "Conta.: "+conta+" | Depositou.:"+valor+" para a conta.: "+conta;
             valor = valor - saldo;
-            msg = "Usuario.: "+nome+" /n Depositou.:"+valor+" para a conta.: "+conta;
-            //forma de identificar conta e acessar para depositar
+            System.out.println(msg);
+            //falta forma de identificar conta e acessar para depositar
         }
 
-        System.out.println("Finalizando Operaçao");
+        System.out.println("\n----------------------- Finalizando Operaçao ---------------------------");
 
-    }
-
-    public void extrato() {
+        gera.extrato(conta, msg);
 
     }
 
