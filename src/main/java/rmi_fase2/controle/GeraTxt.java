@@ -15,7 +15,13 @@ public class GeraTxt {
             FileWriter user1 = new FileWriter("Usuario1.txt");
             PrintWriter gravaUser1 = new PrintWriter(user1);
 
+            gravaUser1.printf("--------------\n");
+
             gravaUser1.printf(msg);
+
+            gravaUser1.printf("\n--------------");
+
+            user1.close();
 
         /*
         if(conta==124){

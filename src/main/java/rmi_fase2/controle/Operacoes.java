@@ -26,7 +26,7 @@ public abstract class Operacoes extends GeraTxt{
             System.out.println(msg);
         }
 
-        System.out.println("\n----------------------- Finalizando Operaçao ---------------------------\n");
+        System.out.println("\n----------------------- Finalizando Operaçao ---------------------------");
 
         gera.extrato(conta, msg);
 
