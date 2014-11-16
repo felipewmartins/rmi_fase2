@@ -1,6 +1,5 @@
 package rmi_fase2.server;
 
-import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -9,11 +8,9 @@ import java.rmi.server.UnicastRemoteObject;
 import rmi_fase2.compute.Compute;
 import rmi_fase2.compute.Task;
 
-public class ComputeEngine implements Compute, Serializable {
+public class Participante1 implements Compute {
 
-  private static final long serialVersionUID = -2163726111780263507L;
-
-  public ComputeEngine() {
+  public Participante1() {
     super(); // TODO Auto-generated constructor stub
   }
 
@@ -24,22 +21,18 @@ public class ComputeEngine implements Compute, Serializable {
   }
 
   public static void main(String[] args) {
-    /*
-     * if (System.getSecurityManager() == null) { System.setSecurityManager(new SecurityManager());
-     * //instala a segurança da aplicação }
-     */
     try {
-      LocateRegistry.createRegistry(2000);
-      System.out.println("RMI registrado na porta 2000");
+      LocateRegistry.createRegistry(2001);
+      System.out.println("RMI registrado na porta 2001");
     } catch (Exception e) {
       // TODO: handle exception
       e.printStackTrace();
     }
     try {
       String name = "Compute";
-      Compute engine = new ComputeEngine();
-      Compute stub = (Compute) UnicastRemoteObject.exportObject(engine, 2000);
-      Registry registry = LocateRegistry.getRegistry(2000);
+      Compute engine = new Participante1();
+      Compute stub = (Compute) UnicastRemoteObject.exportObject(engine, 2001);
+      Registry registry = LocateRegistry.getRegistry(2001);
       registry.rebind(name, stub);
       System.out.println("ComputeEngine bound");
     } catch (Exception e) {
