@@ -25,7 +25,7 @@ public class Cliente extends Operacoes {
       String name = "Compute";
       Registry registry = LocateRegistry.getRegistry("localhost",ServersNames.COORDENADOR.getPort());
       Compute comp = (Compute)registry.lookup(name);
-      ReadFile read = new ReadFile("/home/felipe/teste.txt");
+      //ReadFile read = new ReadFile("/home/felipe/teste.txt");
       comp.executeTask(cliOperacoes.depositar(100, 123));
       System.out.println("Fim");
     } catch (Exception e) {
