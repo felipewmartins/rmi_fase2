@@ -1,9 +1,13 @@
 package rmi_fase2.controle;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-public abstract class Operacoes extends GeraTxt {
+import rmi_fase2.compute.Task;
 
+public abstract class Operacoes extends GeraTxt implements Task<Double>, Serializable {
+
+  private static final long serialVersionUID = 1L;
   private String msg;
   private GeraTxt gera = new GeraTxt();
   private double saldo = 200;

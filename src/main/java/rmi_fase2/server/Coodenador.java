@@ -1,51 +1,49 @@
 package rmi_fase2.server;
 
 import java.io.Serializable;
-import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 
 import rmi_fase2.compute.Compute;
+import rmi_fase2.compute.ServersNames;
 import rmi_fase2.compute.Task;
 
-public class Coodenador implements Compute, Serializable {
+public class Coodenador extends ServerGenerico implements Compute, Serializable {
 
   private static final long serialVersionUID = -2163726111780263507L;
 
-  public Coodenador() {
-    super(); // TODO Auto-generated constructor stub
+  private ServersNames servAtual;
+
+  public Coodenador(String name, int port) {
+    super(name, port);
+
   }
 
   @Override
-  public <T> T executeTask(Task<T> t) throws RemoteException {
+  public <T> T executeTask(Task<T> t) {
     // TODO Auto-generated method stub
-    return t.execute();
+    return gereciaConexao(t);
   }
 
-  public static void main(String[] args) {
-    /*
-     * if (System.getSecurityManager() == null) { System.setSecurityManager(new SecurityManager());
-     * //instala a segurança da aplicação }
-     */
+  public <T> T gereciaConexao(Task<T> t) {
+    T result = executarNoServer(servAtual, t);
+    servAtual =
+        servAtual == ServersNames.PARTICIPANTE_1 ? ServersNames.PARTICIPANTE_2
+            : ServersNames.PARTICIPANTE_1;
+    return result;
+
+  }
+
+  private <T> T executarNoServer(ServersNames server, Task<T> t) {
+    T retorno = null;
     try {
-      LocateRegistry.createRegistry(2000);
-      System.out.println("RMI registrado na porta 2000");
+      Registry registry = LocateRegistry.getRegistry(server.getPort());
+      Compute comp = (Compute) registry.lookup(server.name());
+      retorno = comp.executeTask(t);
     } catch (Exception e) {
-      // TODO: handle exception
       e.printStackTrace();
     }
-    try {
-      String name = "Compute";
-      Compute engine = new Coodenador();
-      Compute stub = (Compute) UnicastRemoteObject.exportObject(engine, 2000);
-      Registry registry = LocateRegistry.getRegistry(2000);
-      registry.rebind(name, stub);
-      System.out.println("ComputeEngine bound");
-    } catch (Exception e) {
-      System.err.println("ComputeEngine exception:");
-      e.printStackTrace();
-    }
+    return retorno;
   }
 
 }
