@@ -31,5 +31,17 @@ public class ReadFile implements Task, Serializable {
 
   }
 
+  @Override
+  public Object sacar(double valor, int conta) {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
+  @Override
+  public Object depositar(double valor, int conta) {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+ 
 }

@@ -27,7 +27,7 @@ public abstract class ServerGenerico implements Compute {
   public void iniciarServer() {
     registrarRMI();
     try {
-      Compute stub = (Compute) UnicastRemoteObject.exportObject(this, 0);
+      Compute stub = (Compute) UnicastRemoteObject.exportObject(this, this.port);
       Registry registry = LocateRegistry.getRegistry(port);
       registry.rebind(name, stub);
       System.out.printf("Server rodando %s:%d%n", this.name, this.port);

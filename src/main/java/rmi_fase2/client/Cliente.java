@@ -1,43 +1,68 @@
 package rmi_fase2.client;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Scanner;
 
-import rmi_fase2.client.task.ReadFile;
 import rmi_fase2.compute.Compute;
 import rmi_fase2.compute.ServersNames;
-import rmi_fase2.controle.Operacoes;
+import rmi_fase2.compute.Task;
 
-public class Cliente extends Operacoes {
+public class Cliente{
   
+  private OperacaoImpl oper;
   
-  public Cliente() {
+  public Cliente() throws RemoteException {
    super(); // TODO Auto-generated constructor stub
-   
+   oper = new OperacaoImpl();
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({"unchecked", "rawtypes"})
   public static void main(String[] args) throws IOException {
-    Operacoes cliOperacoes = new Cliente();
-    cliOperacoes.depositar(100, 123);
-    try {
-      String name = "Compute";
-      Registry registry = LocateRegistry.getRegistry("localhost",ServersNames.COORDENADOR.getPort());
-      Compute comp = (Compute)registry.lookup(name);
-      //ReadFile read = new ReadFile("/home/felipe/teste.txt");
-      comp.executeTask(cliOperacoes.depositar(100, 123));
-      System.out.println("Fim");
+    
+    boolean continua = true;  
+      
+    try (Scanner sc = new Scanner(System.in)){
+      Registry registry = LocateRegistry.getRegistry(ServersNames.COORDENADOR.getPort());
+      Compute comp = (Compute)registry.lookup(ServersNames.COORDENADOR.name());
+      
+      System.out.println("/////////////////////////////////////////////////////\n");
+      System.out.println("////////////////OPERADOR BANCÁRIO///////////////////\n");
+      System.out.println("Conta disponível: 123");
+      System.out.println("Opção 1 - Sacar");
+      System.out.println("Opção 2 - Depositar");
+      System.out.println("Opção 3 - Consultar");
+      System.out.println("Opção 4 - Sair");
+      
+      while(continua){
+        String opcao = sc.next();
+        
+        switch (opcao) {
+          case "1":
+            System.out.println("Digite o valor que deseja sacar -->");
+            double valor = sc.nextDouble();
+            OperacaoImpl oper = new OperacaoImpl();
+            boolean retorno  = (boolean) comp.executeTask((Task) oper.sacar(valor, 123));
+            System.out.println(retorno);
+            break;
+          case "2":
+            double valor2 = sc.nextDouble();
+            OperacaoImpl oper2 = new OperacaoImpl();
+            System.out.println("Digite o valor que deseja depositar -->");
+            boolean retornoDeposito = (boolean) comp.executeTask((Task) oper2.depositar(valor2, 123));
+            System.out.println(retornoDeposito);
+
+          default:
+            break;
+        }
+      }
+        
+      
     } catch (Exception e) {
       // TODO: handle exception
     }
   }
 
-  @Override
-  public Double execute() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  
 }
