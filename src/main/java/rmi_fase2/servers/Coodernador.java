@@ -14,7 +14,8 @@ public class Coodernador extends UnicastRemoteObject {
   }
   
   public String teste(){
-    return "Deu certo!";
+
+      return "Deu certo!";
   }
 
   private static final long serialVersionUID = -2319453752009526824L;

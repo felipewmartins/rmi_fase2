@@ -5,12 +5,16 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import rmi_fase2.interfaces.Teste;
+import rmi_fase2.engine.Teste;
 
 public class ClientTest {
+
   static Teste obj = null;
+
   static String message = "branco";
+
   public static void main(String[] args) {
+
     try {
       obj = (Teste)Naming.lookup("//"
           + "kvist.cs.umu.se"
@@ -19,6 +23,7 @@ public class ClientTest {
     } catch (MalformedURLException | RemoteException | NotBoundException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
+
     }
   }
 }

@@ -28,10 +28,31 @@ public class GeraTxt {
 
             FileWriter user2 = new FileWriter("Usuario2.txt");
             PrintWriter gravaUser2 = new PrintWriter(user2);
+
+            gravaUser2.printf("--------------\n");
+
             gravaUser2.printf(msg);
+
+            gravaUser2.printf("\n--------------");
+
+            user2.close();
         }
         else
             System.out.println("Conta nao existe");
+    }
+
+    public void logCoord(String input, String msg) throws IOException {
+
+        FileWriter gera = new FileWriter("Coordenador.txt");
+        PrintWriter gravaCoord = new PrintWriter(gera);
+
+        gravaCoord.printf("----------------\n");
+
+        gravaCoord.printf(msg);
+
+        gravaCoord.printf("\n----------------\n");
+
+        gera.close();
     }
 
 }
